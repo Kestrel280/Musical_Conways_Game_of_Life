@@ -32,8 +32,6 @@ var surviveCond = [2, 3]; //currently unused
 
 //------------------------------------------------------------------//
 
-window.onload = resetBoard;
-
 var board = []; //array of arrays: index with board[column, row]
 var nboard = []; //2d array of neighbor counts
 var aboard = []; //2d array of audio source nodes
@@ -314,6 +312,11 @@ async function play() {
 		await sleep(tempo);
 	}
 	actx.resume();
+}
+
+async function userInit() {
+    resetBoard();
+    actx.resume();
 }
 
 //the following functions are all demo pattern functions. they contain encoded data (that I input by hand...) for some interesting patterns in Conway's. there's TONS of interesting patterns/oscillators/etc, so i chose some of the more prolific ones.
