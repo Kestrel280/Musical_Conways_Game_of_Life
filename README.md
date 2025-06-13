@@ -1,4 +1,5 @@
 <h1>Musical Conway's Game of Life</h1>
+<h2><a href="https://kestrel280.github.io/Musical_Conways_Game_of_Life/page.html">Click here to play!</a></h2>
 <p>
 <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> is a cellular automaton developed by John Conway in 1970. This is a (wrapped-edges) JavaScript implementation of the game, where each living cell makes sound using Mozilla's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>. The y-coordinate of the cell controls pitch, while the x-coordinate controls filter cutoff and panning. The number of living neighbors to a cell determines the Q-factor of the low-pass filter. An LFO controls detuning. All of this is handled by large arrays of nodes hooked up to the game board itself. Some parameters of the game are included at the start of the script.js file; these can be tweaked to change the sound and behavior of the game.
 <br /> <br />
