@@ -10,6 +10,7 @@
 <body>
 
 <h1>Musical Conway's Game of Life</h1>
+<h3>Background -- if you just want to play around, you can skip all these words!</h3>
 <p>
 <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a> is a cellular automaton developed by John Conway in 1970. This is a (wrapped-edges) JavaScript implementation of the game, where each living cell makes sound using Mozilla's <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>. The y-coordinate of the cell controls pitch, while the x-coordinate controls filter cutoff and panning. The number of living neighbors to a cell determines the Q-factor of the low-pass filter. An LFO controls detuning. All of this is handled by large arrays of nodes hooked up to the game board itself. Some parameters of the game are included at the start of the script.js file; these can be tweaked to change the sound and behavior of the game.
 <br /> <br />
@@ -17,6 +18,7 @@ I created this page for a school project in my sophomore year of college. It was
 <br /> <br />
 <strong>To play:</strong> set up an initial state on the game board by clicking cells to toggle them alive/dead, then press the "Play" checkbox to toggle running the game. Alternatively, use the "Random Board" buttons or the Premade Patterns to populate the game board. The rules of the game are listed on <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">the Wikipedia page</a>; but, most of the fun comes from just setting up interesting shapes and seeing where they go. For more, check out <a href="http://www.conwaylife.com/wiki/Main_Page">LifeWiki</a> to see some of the crazy things people have come up with; my personal favorite is <a href="https://codegolf.stackexchange.com/questions/11880/build-a-working-game-of-tetris-in-conways-game-of-life">this functional Tetris implementation WITHIN Conway's Game of Life</a>.
 </p>
+<hr />
 
 <p>
 <span style="font-size:20px;font-weight:bold">click this button first</span>, to initialize the board and start the audio engine (the browser needs to know you're okay with playing sound!)
@@ -24,13 +26,22 @@ I created this page for a school project in my sophomore year of college. It was
 <button style="font-size:50px" onclick="userInit()">Start/Reset</button>
 
 <p>
-Controls: <br />
+<strong>Try these premade patterns first!</strong> <br />
+<button onclick="glider()">Glider</button>
+<button onclick="blocker()">Blocker</button>
+<button onclick="pentadecathlons()">Three Pentadecathlons</button>
+<button onclick="gosper()">Gosper Glider Gun</button>
+</p>
+
+<p style="font-size:16px">
+Use these buttons to advance the board, according to the rules of Conway's Game of Life. (Green cells are "alive", red cells are "dead"):
+<br />
 <button onclick="step()">Step Once</button>
+||| Auto-step: <input type="checkbox" id="playButton" style="zoom:1.5" onclick="play()">
+||| Speed of auto-step <input type="range" min="10" max="80" value="60" id="tempoSlider"></span>
 <br />
-<button onclick="randomBoard()">Random Board</button>
-<input type="range" min="0" max="22" value="10" id="densSlider">Density
-<br />
-speed: <input type="range" min="10" max="80" value="60" id="tempoSlider">
+<button onclick="randomBoard()">Randomize the board! (Slider controls density)</button>
+<input type="range" min="0" max="22" value="10" id="densSlider">
 <br />
 volume: <input type="range" min="0" max="200" value="100" id="volSlider">
 <br />
@@ -38,16 +49,7 @@ volume: <input type="range" min="0" max="200" value="100" id="volSlider">
 </p>
 
 <p>
-Premade Patterns: <br />
-<button onclick="glider()">Glider</button>
-<button onclick="blocker()">Blocker</button>
-<button onclick="pentadecathlons()">Three Pentadecathlons</button>
-<button onclick="gosper()">Gosper Glider Gun</button>
-</p>
-
-<p>
 <canvas id="htmlCanv"></canvas> <span style="zoom:5">
-play: <input type="checkbox" id="playButton" onclick="play()"></span>
 </p>
 
 <p id="stats">
